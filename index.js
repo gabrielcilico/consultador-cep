@@ -7,27 +7,21 @@ app.use(express.json())
 app.listen(3000, () => {
     console.log("servidor online")  
 })
-const api = axios.create({ 
-    baseUrl: 'https://viacep.com.br/ws' 
-})
 
 app.get('/', (request,response) => {
     response.send('Hello world')    
 })
 
-app.get("/consulta/:cep/cep", async (request,response) => {
-    let cep = request.params.cep
-    let endereco = await buscaPorCep(cep) 
-    response.send(endereco)
-}) 
+app.get("/consulta/:cep/:type", async (request,response) => {
+    let type = request.params.type
+    let { logradouro, cep, localidade, uf } = await buscaEnderecoPorCep(request.params.cep) 
+    response.send(`${logradouro} - ${cep} / ${localidade}-${uf}`)
+})
 
-const buscaPorCep = async (cep) => {
+const buscaEnderecoPorCep = async (cep) => {
     let url = `https://viacep.com.br/ws/${cep}/json/`
-    //console.log(url)
-    let response =  await axios({method:'get',url})
-    //console.log(response.data)
-    let endereco = response.data 
-    
+    let response = await axios({method:'get',url})
+    let endereco = response.data
+
     return endereco
 }
-
