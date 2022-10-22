@@ -1,0 +1,23 @@
+{
+  "name": "consultador-cep",
+  "version": "1.0.0",
+  "description": "Projeto para consultar ceps e testar API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielcilico/consultador-cep.git"
+  },
+  "keywords": [
+    "cep",
+    "consulta"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielcilico/consultador-cep/issues"
+  },
+  "homepage": "https://github.com/gabrielcilico/consultador-cep#readme"
+}
